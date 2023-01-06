@@ -50,8 +50,10 @@ class Hive(BaseSQLQueryRunner):
                 "port": {"type": "number"},
                 "database": {"type": "string"},
                 "username": {"type": "string"},
+                "password": {"type": "string"},
+                "auth" : {"type": "string"},
             },
-            "order": ["host", "port", "database", "username"],
+            "order": ["host", "port", "database", "username", "password"],
             "required": ["host"],
         }
 
@@ -110,6 +112,8 @@ class Hive(BaseSQLQueryRunner):
             port=self.configuration.get("port", None),
             database=self.configuration.get("database", "default"),
             username=self.configuration.get("username", None),
+            password=self.configuration.get("password",None),
+            auth=self.configuration.get("auth", None)
         )
 
         return connection
